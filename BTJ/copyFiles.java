@@ -3,12 +3,12 @@ import java.io.*;
 
 
 public class copyFiles {
-	public static void copy(String b_path, String _name) throws IOException
+	public static void copy(String bedrock_path, String java_name) throws IOException
 	{
 		// Copy Template
-		String outputPath = "saves/" + _name;
+		String java_saves = "saves/" + java_name;
 		File srcDir = new File("D:/context/GitHub/BedrockToJava/JavaPort/template");
-		File destDir = new File(outputPath);
+		File destDir = new File(java_saves);
 
 		// Make sure srcDir exists
 		if (!srcDir.exists()) {
@@ -89,6 +89,6 @@ public class copyFiles {
 				out.close();
 			}
 		}
-		System.out.println("copy from : " + src.getPath() + "to" + dest.getPath() );
+		System.out.println("copy from : " + src.getPath() + "  to  " + dest.getPath() );
 	}
 }

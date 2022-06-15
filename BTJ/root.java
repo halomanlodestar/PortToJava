@@ -8,16 +8,17 @@ class root {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
-        // Path
-        System.out.println("Enter Path of Bedrock Pack : ");
-        String Path = sc.nextLine();
+        // Input Bedrock Path
+        System.out.print("Enter Path of Bedrock Pack : ");
+        String BedrockFilePath = sc.nextLine();
 
-        // Name
-        System.out.println("Enter Name of Ported File : ");
-        String Name = sc.nextLine();
+        // Inpurt Java Name
+        System.out.print("Enter Name of Ported File : ");
+        String JavaFileName = sc.nextLine();
 
+        // Trying Copy Template
         try {
-        copyTemplate(Path, Name);
+        copyTemplate(BedrockFilePath, JavaFileName);
         } catch (IOException e) {
             System.out.println("Error : " + e);
         }
@@ -28,7 +29,8 @@ class root {
     public static void copyTemplate(String path, String name) throws IOException, FileNotFoundException {
         try {
         copyFiles.copy(path, name);
-        Copytextures.rootCopy(name, path);
+        Copytextures CT =  new Copytextures(name, path);
+        CT.rootCopy();
         } catch (IOException e) {
             System.out.println("Error :: " + e);
         }

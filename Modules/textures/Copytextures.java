@@ -3,18 +3,18 @@ import java.io.*;
 
 
 public class Copytextures {
-    static String outDir = "saves/";
-    static String name;
-    static String path;
+    static String java_saves = "saves/";
+    static String java_name;
+    static String bedrock_path;
 
-    public Copytextures(String _name, String _path) {
-         Copytextures.name = _name;
-         Copytextures.path = _path + "/"+ _name + "/textures";
-         Copytextures.outDir = outDir + "/" + _name;
+    public Copytextures(String j_name, String _path) {
+        java_name = j_name;
+        bedrock_path = bedrock_path + "/textures";
+        java_saves = java_saves + "/" + j_name + "/textures";
     }
 
     // Execute All
-    public static void rootCopy(String _name, String _path) throws IOException, FileNotFoundException {
+    public void rootCopy() throws IOException, FileNotFoundException {
         
         try {
             copyBlock();
@@ -24,10 +24,10 @@ public class Copytextures {
 
     // Blocks 
     public static void copyBlock() throws IOException, FileNotFoundException {
-        File block = new File(path+"/blocks");
-        File destDir = new File(outDir);
+        File blocks = new File(bedrock_path + "/blocks");
+        File block = new File(java_saves + "/block");
         try {
-        BTJ.copyFiles.fileCopy(block, destDir);
+        BTJ.copyFiles.fileCopy(blocks, block);
         } catch (IOException e) {
             System.out.println("\n" + e);
         }
@@ -35,10 +35,10 @@ public class Copytextures {
 
     // Items
     public static void copyItem() throws IOException, FileNotFoundException {
-        File item = new File(path+"/items");
-        File destDir = new File(outDir + "/item");
+        File items = new File(bedrock_path + "/items");
+        File item = new File(java_saves + "/item");
         try {
-            BTJ.copyFiles.fileCopy(item, destDir);
+            BTJ.copyFiles.fileCopy(items, item);
         } catch (IOException e) {
             System.out.println("\n" + e);
         }
